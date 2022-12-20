@@ -1,24 +1,19 @@
-import React , { useState } from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { TextField } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 
-function InputQuestion(props) {
-  const [disabled , setDisabled] = useState(true)
+function InputQuestion() {
+  let questionContent = useSelector((state) => state.inputType.questionContent)
 
-  const changeInputHandler = (e) => {
-    const content = e.target.value;
-  
-    if(content){
-      setDisabled(false)
-    }
-
-    props.onChangeInput(disabled)
-  }
-
+  const theme = createTheme({
+    direction: 'rtl',
+  });
 
   return (
     <div>
-        <h2>{props.description}</h2>
-        <label>{props.label}</label>
-        <input type={props.type} onChange={changeInputHandler}/>
+        <h2>{questionContent}</h2>
+        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
     </div>
   )
 }
