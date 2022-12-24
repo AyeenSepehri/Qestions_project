@@ -19,19 +19,20 @@ const questionDatas = [
     },
     {
       id: Math.random(),
-      number: 3,
-      type: "DROP_DOWN",
-      questionContent:"لطفا تاریخ تولد خود را وارد کنید",
-      userAnswer: '' , 
-    },
-    {
-      id: Math.random(),
       number: 4,
       type: "RADIO",
       questionContent: "لطفا جنسیت خود را تعیین کنید",
       answers: ["مرد"  , "زن" , "سایر"],
       userAnswer: "",
-    }
+    },
+    {
+      id: Math.random(),
+      number: 3,
+      type: "DROP_DOWN",
+      questionContent:"لطفا تاریخ تولد خود را وارد کنید",
+      userAnswer: '' , 
+    },
+
   ]
   
 
@@ -39,6 +40,7 @@ const questionDatas = [
       counter: 0,
       questionContent: "" ,
       questionType: "" ,
+      answer:["hello"],
       length: questionDatas.length ,
   }
 
@@ -65,6 +67,13 @@ const questionDatas = [
             console.log(state.questionType)
             console.log(state.counter)
           },
+          debugFn(state){
+            if(state.questionType === "RADIO"){
+              state.answer = state.answer.concat(questionDatas[state.counter].answers);
+              console.log(state.answer)
+              console.log(state.counter)
+            }
+          }
       }
   })
 
